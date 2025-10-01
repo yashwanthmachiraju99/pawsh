@@ -8,12 +8,12 @@ import Footer from "@/components/Footer";
 
 const Index = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen relative">
       {/* Navigation Bar */}
       <NavigationBar />
       
-      {/* Add padding to account for fixed navbar */}
-      <div className="pt-16">
+      {/* Main Content */}
+      <div>
         {/* Hero Section */}
         <HeroSection />
       
