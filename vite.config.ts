@@ -10,8 +10,18 @@ export default defineConfig(({ mode }) => ({
     port: 8080,
     allowedHosts: [
       'pawsh-1.onrender.com',
+      'www.pawshpetservices.com',
+      'pawshpetservices.com',
       'localhost'
     ],
+  },
+  preview: {
+    host: true,
+    port: 8080,
+    strictPort: true,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+    },
   },
   plugins: [
     react({
