@@ -13,7 +13,27 @@ npm install --legacy-peer-deps
 # Build the application
 npm run build
 
-# Create a simple server.js for production
+# Create a simple server.js for production in the root directory
+cat > /opt/render/project/src/server.js << 'EOL'
+const express = require('express');
+const path = require('path');
+const app = express();
+const port = process.env.PORT || 10000;
+
+// Serve static files from the dist directory
+app.use(express.static(path.join(__dirname, 'dist')));
+
+// Handle SPA routing
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+});
+
+app.listen(port, '0.0.0.0', () => {
+  console.log(`Server is running on port ${port}`);
+});
+EOL
+
+# Also create a local server.js for testing
 cat > server.js << 'EOL'
 const express = require('express');
 const path = require('path');
