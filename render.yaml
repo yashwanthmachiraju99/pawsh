@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: pawsh
+    env: node
+    buildCommand: npm install && npm run build
+    staticPublishPath: "./dist"
+    envVars:
+      - key: NODE_VERSION
+        value: 18.x
+      - key: NPM_CONFIG_PRODUCTION
+        value: "false"
+    buildCommand: |
+      npm install
+      npm run build
+    startCommand: npm start
