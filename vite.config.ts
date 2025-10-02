@@ -14,13 +14,20 @@ export default defineConfig(({ mode }) => ({
     ],
   },
   plugins: [
-    react(),
-    mode === 'development' &&
-    componentTagger(),
+    react({
+      jsxImportSource: 'react',
+      tsDecorators: true,
+    }),
+    mode === 'development' && componentTagger(),
   ].filter(Boolean),
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
+    },
+  },
+  optimizeDeps: {
+    esbuildOptions: {
+      target: 'es2020',
     },
   },
 }));
